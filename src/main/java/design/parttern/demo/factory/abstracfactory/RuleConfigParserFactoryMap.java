@@ -5,16 +5,16 @@ import java.util.Map;
 
 public class RuleConfigParserFactoryMap {
 
-    private static final Map<String, IRuleConfigParserFactory> cachedFactories = new HashMap<>();
+    private static final Map<String, IConfigParserFactory> cachedFactories = new HashMap<>();
 
     static {
-        cachedFactories.put("json", new JsonRuleConfigParserFactory());
-        cachedFactories.put("yaml", new YamlRuleConfigParserFactory());
-        cachedFactories.put("properties", new PropertiesRuleConfigParserFactory());
-        cachedFactories.put("xml", new XmlRuleConfigParserFactory());
+        cachedFactories.put("json", new JsonConfigParserFactory());
+        cachedFactories.put("yaml", new YamlConfigParserFactory());
+        cachedFactories.put("properties", new PropertiesConfigParserFactory());
+        cachedFactories.put("xml", new XmlConfigParserFactory());
     }
 
-    public static IRuleConfigParserFactory getParserFactory(String ruleConfigFileExtension) {
+    public static IConfigParserFactory getParserFactory(String ruleConfigFileExtension) {
         if (ruleConfigFileExtension == null || ruleConfigFileExtension.isEmpty()) {
             return null;
         }
